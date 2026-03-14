@@ -15,7 +15,7 @@
       --text: #f9fafb;
       --muted: #9ca3af;
       --dim: #6b7280;
-      --blue: #3b82f6;
+      --indigo: #6366f1;
       --green: #22c55e;
       --red: #ef4444;
       --amber: #f59e0b;
@@ -31,7 +31,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: var(--blue); text-decoration: none; }
+    a { color: var(--indigo); text-decoration: none; }
 
     /* NAV */
     nav {
@@ -54,10 +54,10 @@
       letter-spacing: -0.3px;
     }
 
-    .nav-logo span { color: var(--blue); }
+    .nav-logo span { color: var(--indigo); }
 
     .nav-cta {
-      background: var(--blue);
+      background: var(--indigo);
       color: #fff;
       font-weight: 600;
       font-size: 14px;
@@ -113,7 +113,7 @@
       margin-bottom: 20px;
     }
 
-    .hero h1 span { color: var(--blue); }
+    .hero h1 span { color: var(--indigo); }
 
     .hero p {
       font-size: 18px;
@@ -129,7 +129,7 @@
     }
 
     .btn-primary {
-      background: var(--blue);
+      background: var(--indigo);
       color: #fff;
       font-weight: 600;
       font-size: 15px;
@@ -183,7 +183,7 @@
       font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--blue);
+      color: var(--indigo);
       margin-bottom: 12px;
     }
 
@@ -233,29 +233,29 @@
       line-height: 1.6;
     }
 
-    /* INTEGRATIONS */
-    .integrations-section {
+    /* DATA SOURCES */
+    .sources-section {
       background: var(--bg2);
       border-top: 1px solid var(--bg3);
       border-bottom: 1px solid var(--bg3);
     }
 
-    .integrations-section section {
+    .sources-section section {
       display: flex;
       align-items: center;
       gap: 60px;
     }
 
-    .integrations-left { min-width: 280px; }
+    .sources-left { min-width: 280px; }
 
-    .integrations-list {
+    .sources-list {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       flex: 1;
     }
 
-    .integration-pill {
+    .source-pill {
       background: var(--bg);
       border: 1px solid var(--bg3);
       border-radius: 100px;
@@ -376,7 +376,7 @@
       .features-grid { grid-template-columns: 1fr; }
       .privacy-grid { grid-template-columns: 1fr; }
 
-      .integrations-section section {
+      .sources-section section {
         flex-direction: column;
         gap: 32px;
         align-items: flex-start;
@@ -410,10 +410,10 @@
     <div>
       <div class="hero-badge">
         <span class="dot"></span>
-        iOS and Android, coming soon
+        Android in early access
       </div>
       <h1>Know before<br /><span>you go.</span></h1>
-      <p>Free Radical is a native iOS and Android app that gives you activity-specific outdoor conditions in one place. Stop bouncing between weather apps.</p>
+      <p>Free Radical gives you activity-specific outdoor conditions in one place. Switch between skiing, climbing, hiking, diving, and fishing to see only what matters for your objective.</p>
       <div class="hero-actions">
         <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
         <a href="#features" class="btn-secondary">See Features</a>
@@ -433,14 +433,14 @@
 
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <div class="feature-title">Dashboard</div>
-        <div class="feature-desc">Activity-specific conditions at a glance. See what matters for your objective without digging through raw forecast data.</div>
+        <div class="feature-icon">🎯</div>
+        <div class="feature-title">Activity Modes</div>
+        <div class="feature-desc">Switch between skiing, climbing, hiking, diving, and fishing. Each mode shows only the conditions relevant to that objective.</div>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🌡️</div>
         <div class="feature-title">Weather</div>
-        <div class="feature-desc">Current temperature, wind speed and direction, humidity, freezing level, and barometric pressure from NWS.</div>
+        <div class="feature-desc">Current temperature, wind speed and direction, humidity, freezing level, UV index, and barometric pressure trend.</div>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📅</div>
@@ -458,28 +458,28 @@
         <div class="feature-desc">Tide times and heights for coastal objectives, plus moon phase and illumination percentage for night travel planning.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🔥</div>
-        <div class="feature-title">Sun &amp; Fire</div>
-        <div class="feature-desc">Sunrise and sunset times for your location, plus active fire perimeter data so you know what's burning nearby.</div>
+        <div class="feature-icon">🎒</div>
+        <div class="feature-title">Trips &amp; Gear</div>
+        <div class="feature-desc">Plan trips, build gear loadouts, and track what you packed. Rate your outings and keep notes on conditions you found.</div>
       </div>
     </div>
   </section>
 
-  <!-- INTEGRATIONS -->
-  <div class="integrations-section">
+  <!-- DATA SOURCES -->
+  <div class="sources-section">
     <section>
-      <div class="integrations-left">
+      <div class="sources-left">
         <div class="section-label">Data Sources</div>
-        <h2 class="section-title" style="font-size: 28px;">Built on real data sources</h2>
-        <p class="section-sub" style="font-size: 15px;">Public agency data, not third-party aggregators.</p>
+        <h2 class="section-title" style="font-size: 28px;">Built on real data</h2>
+        <p class="section-sub" style="font-size: 15px;">Public agency sources, not third-party aggregators.</p>
       </div>
-      <div class="integrations-list">
-        <span class="integration-pill">NWS</span>
-        <span class="integration-pill">SNOTEL</span>
-        <span class="integration-pill">NOAA</span>
-        <span class="integration-pill">USGS</span>
-        <span class="integration-pill">Avalanche Center</span>
-        <span class="integration-pill">NWS Alerts</span>
+      <div class="sources-list">
+        <span class="source-pill">Open-Meteo</span>
+        <span class="source-pill">NOAA</span>
+        <span class="source-pill">USGS</span>
+        <span class="source-pill">SNOTEL</span>
+        <span class="source-pill">Avalanche.org</span>
+        <span class="source-pill">NIFC</span>
       </div>
     </section>
   </div>
@@ -520,20 +520,20 @@
     <div class="waitlist-inner">
       <div class="section-label" style="text-align:center;">Early Access</div>
       <h2 class="section-title">Get in early</h2>
-      <p class="section-sub">iOS and Android builds are in development. Join the waitlist and be first to know when it's ready.</p>
+      <p class="section-sub">Android is live in early access. iOS is coming. Drop your email and we'll let you know when it's ready for you.</p>
 
-      <iframe src="https://tally.so/embed/placeholder" loading="lazy" width="100%" height="152" frameborder="0" marginheight="0" marginwidth="0" title="Free Radical Early Access"></iframe>
+      <iframe data-tally-src="https://tally.so/embed/WO0O8k?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="152" frameborder="0" marginheight="0" marginwidth="0" title="Free Radical Early Access"></iframe>
+      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
       <p class="waitlist-note">No spam. Just a heads up when it's ready.</p>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 GOW Studios. <a href="https://virtualfrancis.github.io/ctrlfreak-legal/privacy/" style="color:var(--dim);">Privacy Policy</a></p>
+    <p>© 2026 GOW Studios. <a href="https://virtualfrancis.github.io/free-radical-legal/privacy/" style="color:var(--dim);">Privacy Policy</a></p>
     <div class="platform-badges">
       <span class="platform-badge">Android</span>
-      <span class="platform-badge">iOS</span>
-      <span class="platform-badge">Coming Soon</span>
+      <span class="platform-badge">iOS Coming Soon</span>
     </div>
   </footer>
 
