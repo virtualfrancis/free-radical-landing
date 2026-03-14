@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Radical: Know Before You Go</title>
+  <meta name="description" content="Activity-specific outdoor conditions for iOS and Android. Weather, snow, tides, avalanche danger and more, built for outdoor objectives." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #111827;
+      --bg3: #1f2937;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --dim: #6b7280;
+      --blue: #3b82f6;
+      --green: #22c55e;
+      --red: #ef4444;
+      --amber: #f59e0b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--blue); text-decoration: none; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--bg3);
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .nav-logo span { color: var(--blue); }
+
+    .nav-cta {
+      background: var(--blue);
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 20px;
+      border-radius: 8px;
+      transition: opacity 0.15s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 40px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg2);
+      border: 1px solid var(--bg3);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .hero-badge .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span { color: var(--blue); }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px 28px;
+      border-radius: 10px;
+      transition: opacity 0.15s;
+    }
+
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-secondary {
+      background: var(--bg2);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px 28px;
+      border-radius: 10px;
+      border: 1px solid var(--bg3);
+      transition: border-color 0.15s;
+    }
+
+    .btn-secondary:hover { border-color: var(--dim); }
+
+    .hero-screenshots {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .hero-screenshots img {
+      width: 200px;
+      border-radius: 28px;
+      box-shadow: 0 32px 64px rgba(0,0,0,0.6);
+      border: 1px solid var(--bg3);
+    }
+
+    .hero-screenshots img:nth-child(2) {
+      margin-top: 32px;
+    }
+
+    /* SECTION */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 40px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.7;
+    }
+
+    /* FEATURES */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .feature-card {
+      background: var(--bg2);
+      border: 1px solid var(--bg3);
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .feature-icon {
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    .feature-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* INTEGRATIONS */
+    .integrations-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--bg3);
+      border-bottom: 1px solid var(--bg3);
+    }
+
+    .integrations-section section {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .integrations-left { min-width: 280px; }
+
+    .integrations-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .integration-pill {
+      background: var(--bg);
+      border: 1px solid var(--bg3);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    /* PRIVACY */
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .privacy-card {
+      background: var(--bg2);
+      border: 1px solid var(--bg3);
+      border-radius: 14px;
+      padding: 28px;
+      display: flex;
+      gap: 16px;
+    }
+
+    .privacy-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .privacy-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .privacy-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* WAITLIST */
+    .waitlist-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--bg3);
+    }
+
+    .waitlist-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 80px 40px;
+    }
+
+    .waitlist-inner .section-sub {
+      max-width: 100%;
+      margin: 0 auto 40px;
+    }
+
+    .waitlist-note {
+      font-size: 13px;
+      color: var(--dim);
+      margin-top: 14px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--bg3);
+      padding: 32px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--dim);
+    }
+
+    .platform-badges {
+      display: flex;
+      gap: 10px;
+    }
+
+    .platform-badge {
+      background: var(--bg2);
+      border: 1px solid var(--bg3);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 48px 20px 40px;
+        gap: 40px;
+        text-align: center;
+      }
+
+      .hero h1 { font-size: 36px; }
+      .hero-actions { justify-content: center; }
+      .hero-screenshots { justify-content: center; }
+      .hero-screenshots img { width: 150px; }
+
+      section { padding: 60px 20px; }
+
+      .features-grid { grid-template-columns: 1fr; }
+      .privacy-grid { grid-template-columns: 1fr; }
+
+      .integrations-section section {
+        flex-direction: column;
+        gap: 32px;
+        align-items: flex-start;
+      }
+
+      .waitlist-inner { padding: 60px 20px; }
+
+      footer {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        padding: 32px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Free <span>Radical</span></div>
+    <div style="display:flex;align-items:center;gap:28px;">
+      <a href="#features" style="font-size:14px;font-weight:500;color:var(--muted);">Features</a>
+      <a href="#waitlist" style="font-size:14px;font-weight:500;color:var(--muted);">Waitlist</a>
+      <a href="#waitlist" class="nav-cta">Get Early Access</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="hero-badge">
+        <span class="dot"></span>
+        iOS and Android, coming soon
+      </div>
+      <h1>Know before<br /><span>you go.</span></h1>
+      <p>Free Radical is a native iOS and Android app that gives you activity-specific outdoor conditions in one place. Stop bouncing between weather apps.</p>
+      <div class="hero-actions">
+        <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
+        <a href="#features" class="btn-secondary">See Features</a>
+      </div>
+    </div>
+    <div class="hero-screenshots">
+      <img src="images/dashboard.png" alt="Free Radical dashboard showing activity-specific outdoor conditions" />
+      <img src="images/conditions.png" alt="Free Radical conditions screen showing weather, snow depth, and tides" />
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="section-label">Features</div>
+    <h2 class="section-title">Conditions built for outdoor objectives</h2>
+    <p class="section-sub">All the data sources you'd check anyway, pulled together by activity and shown in the order that actually matters.</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <div class="feature-title">Dashboard</div>
+        <div class="feature-desc">Activity-specific conditions at a glance. See what matters for your objective without digging through raw forecast data.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌡️</div>
+        <div class="feature-title">Weather</div>
+        <div class="feature-desc">Current temperature, wind speed and direction, humidity, freezing level, and barometric pressure from NWS.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <div class="feature-title">Forecast</div>
+        <div class="feature-desc">Multi-day outlook so you can plan ahead and pick the right window for your objective.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">❄️</div>
+        <div class="feature-title">Snow &amp; Avalanche</div>
+        <div class="feature-desc">SNOTEL snow depth and water equivalent paired with current avalanche danger level from the regional avalanche center.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌊</div>
+        <div class="feature-title">Tides &amp; Moon</div>
+        <div class="feature-desc">Tide times and heights for coastal objectives, plus moon phase and illumination percentage for night travel planning.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔥</div>
+        <div class="feature-title">Sun &amp; Fire</div>
+        <div class="feature-desc">Sunrise and sunset times for your location, plus active fire perimeter data so you know what's burning nearby.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRATIONS -->
+  <div class="integrations-section">
+    <section>
+      <div class="integrations-left">
+        <div class="section-label">Data Sources</div>
+        <h2 class="section-title" style="font-size: 28px;">Built on real data sources</h2>
+        <p class="section-sub" style="font-size: 15px;">Public agency data, not third-party aggregators.</p>
+      </div>
+      <div class="integrations-list">
+        <span class="integration-pill">NWS</span>
+        <span class="integration-pill">SNOTEL</span>
+        <span class="integration-pill">NOAA</span>
+        <span class="integration-pill">USGS</span>
+        <span class="integration-pill">Avalanche Center</span>
+        <span class="integration-pill">NWS Alerts</span>
+      </div>
+    </section>
+  </div>
+
+  <!-- PRIVACY -->
+  <section>
+    <div class="section-label">Privacy</div>
+    <h2 class="section-title">No account. No tracking.</h2>
+    <p class="section-sub">The app is a direct window into public data. There is nothing else going on.</p>
+
+    <div class="privacy-grid">
+      <div class="privacy-card">
+        <div class="privacy-icon">🚫</div>
+        <div>
+          <div class="privacy-title">No account required</div>
+          <div class="privacy-desc">No login, no profile, no tracking. Open the app and get conditions.</div>
+        </div>
+      </div>
+      <div class="privacy-card">
+        <div class="privacy-icon">📡</div>
+        <div>
+          <div class="privacy-title">Direct data sources</div>
+          <div class="privacy-desc">The app connects directly to public data APIs. Nothing is routed through a developer server.</div>
+        </div>
+      </div>
+      <div class="privacy-card">
+        <div class="privacy-icon">🔇</div>
+        <div>
+          <div class="privacy-title">No telemetry</div>
+          <div class="privacy-desc">No analytics, no usage tracking, no ads. Your outdoor plans are your business.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAITLIST -->
+  <div class="waitlist-section" id="waitlist">
+    <div class="waitlist-inner">
+      <div class="section-label" style="text-align:center;">Early Access</div>
+      <h2 class="section-title">Get in early</h2>
+      <p class="section-sub">iOS and Android builds are in development. Join the waitlist and be first to know when it's ready.</p>
+
+      <iframe src="https://tally.so/embed/placeholder" loading="lazy" width="100%" height="152" frameborder="0" marginheight="0" marginwidth="0" title="Free Radical Early Access"></iframe>
+      <p class="waitlist-note">No spam. Just a heads up when it's ready.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 GOW Studios. <a href="https://virtualfrancis.github.io/ctrlfreak-legal/privacy/" style="color:var(--dim);">Privacy Policy</a></p>
+    <div class="platform-badges">
+      <span class="platform-badge">Android</span>
+      <span class="platform-badge">iOS</span>
+      <span class="platform-badge">Coming Soon</span>
+    </div>
+  </footer>
+
+</body>
+</html>
