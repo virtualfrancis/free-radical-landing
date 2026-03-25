@@ -232,6 +232,50 @@
       line-height: 1.7;
     }
 
+    /* VERDICT DEMO */
+    .verdict-demo {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+
+    .verdict-demo-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 18px;
+      border-radius: 12px;
+    }
+
+    .verdict-demo-row.go    { background: #052e16; border: 1px solid #166534; }
+    .verdict-demo-row.caution { background: #1c1400; border: 1px solid #713f12; }
+    .verdict-demo-row.nogo  { background: #1c0505; border: 1px solid #7f1d1d; }
+
+    .verdict-tag {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 3px 9px;
+      border-radius: 6px;
+      white-space: nowrap;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .verdict-tag.go      { color: #22c55e; background: rgba(34,197,94,0.15);  border: 1px solid rgba(34,197,94,0.3); }
+    .verdict-tag.caution { color: #eab308; background: rgba(234,179,8,0.15);  border: 1px solid rgba(234,179,8,0.3); }
+    .verdict-tag.nogo    { color: #ef4444; background: rgba(239,68,68,0.15);  border: 1px solid rgba(239,68,68,0.3); }
+
+    .verdict-copy {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .verdict-copy strong { color: var(--text); font-weight: 600; }
+
     /* FEATURES */
     .features-grid {
       display: grid;
@@ -422,7 +466,7 @@
         iOS &middot; Now on TestFlight
       </div>
       <h1>Know before<br /><span>you go.</span></h1>
-      <p class="hero-sub">Activity-specific outdoor conditions for what you are actually doing outside. Free, no account required.</p>
+      <p class="hero-sub">Activity-specific conditions for skiing, climbing, hiking, diving, and fishing. Every report ends with a plain go/no-go verdict so you spend less time guessing and more time outside.</p>
       <div class="hero-actions">
         <a href="https://testflight.apple.com/join/aGN8KV9j" target="_blank" rel="noopener" class="btn-primary">Download for iOS (TestFlight)</a>
         <a href="#features" class="btn-secondary">See Features</a>
@@ -451,14 +495,29 @@
 
   <!-- FEATURES -->
   <section id="features">
-    <h2 class="section-title">Conditions built for outdoor objectives</h2>
-    <p class="section-sub">All the data sources you'd check anyway, pulled together by activity and shown in the order that actually matters.</p>
+    <h2 class="section-title">The go/no-go call, before you leave</h2>
+    <p class="section-sub">Every report opens with a plain verdict for your activity. Green means go. Yellow means think twice. Red means stay home. The details are there if you want them.</p>
+
+    <div class="verdict-demo">
+      <div class="verdict-demo-row go">
+        <span class="verdict-tag go">GO</span>
+        <p class="verdict-copy"><strong>Good conditions for climbing.</strong> Clear skies, 58&deg;F, winds at 8 mph. No precipitation in the forecast window.</p>
+      </div>
+      <div class="verdict-demo-row caution">
+        <span class="verdict-tag caution">CAUTION</span>
+        <p class="verdict-copy"><strong>Use caution for skiing.</strong> Avalanche danger is Considerable (3/5). Travel cautiously and avoid slopes above 35 degrees.</p>
+      </div>
+      <div class="verdict-demo-row nogo">
+        <span class="verdict-tag nogo">HAZARD</span>
+        <p class="verdict-copy"><strong>Not recommended for hiking.</strong> Thunderstorms in the area. Avoid exposed ridges and summits.</p>
+      </div>
+    </div>
 
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">🎯</div>
         <div class="feature-title">Activity Modes</div>
-        <div class="feature-desc">Switch between skiing, climbing, hiking, diving, and fishing. Each mode shows only the conditions relevant to that objective.</div>
+        <div class="feature-desc">Switch between skiing, climbing, hiking, diving, and fishing. Each mode shows only the conditions that matter for that objective.</div>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🌡️</div>
@@ -494,7 +553,7 @@
       <div class="sources-left">
         <div class="section-label">Data Sources</div>
         <h2 class="section-title">Built on real data</h2>
-        <p class="section-sub">Public agency sources, not third-party aggregators.</p>
+        <p class="section-sub">The same sources the pros check, pulled directly from public agencies and interpreted for your activity.</p>
       </div>
       <div class="sources-list">
         <span class="source-pill">Open-Meteo</span>
@@ -511,10 +570,10 @@
   <section>
     <div class="section-label">Privacy</div>
     <h2 class="section-title">No account. No tracking.</h2>
-    <p class="section-sub">The app is a direct window into public data. There is nothing else going on.</p>
+    <p class="section-sub">Everything happens on your device. No server sees your location. No account is required, ever.</p>
 
     <div class="privacy-callout">
-      <p>No account &middot; No tracking &middot; All data from public sources</p>
+      <p>No account &middot; No tracking &middot; Nothing leaves your phone</p>
     </div>
   </section>
 
@@ -531,7 +590,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 GOW Studios. <a href="https://virtualfrancis.github.io/free-radical-legal/privacy/" style="color:var(--dim);">Privacy Policy</a> &middot; <a href="https://virtualfrancis.github.io/free-radical-legal/terms/" style="color:var(--dim);">Terms of Use</a></p>
+    <p>&copy; 2026 GOW Studios. <a href="https://virtualfrancis.github.io/free-radical-legal/privacy/" style="color:var(--dim);">Privacy Policy</a> &middot; <a href="https://virtualfrancis.github.io/free-radical-legal/terms/" style="color:var(--dim);">Terms of Use</a></p>
     <div class="platform-badges">
       <span class="platform-badge">iOS</span>
       <span class="platform-badge">TestFlight</span>
