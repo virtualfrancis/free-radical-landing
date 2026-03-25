@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Free Radical: Know Before You Go</title>
   <meta name="description" content="Activity-specific outdoor conditions for iOS and Android. Weather, snow, tides, avalanche danger and more, built for outdoor objectives." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -48,15 +51,31 @@
     }
 
     .nav-logo {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--text);
       letter-spacing: -0.3px;
     }
 
-    .nav-logo span { color: var(--indigo); }
+    .nav-logo .radical-word {
+      color: var(--indigo);
+      font-family: 'Permanent Marker', cursive;
+      font-weight: 400;
+    }
 
-    nav a {
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-link {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--muted);
       padding: 10px 8px;
     }
 
@@ -64,8 +83,8 @@
       background: var(--indigo);
       color: #fff;
       font-weight: 600;
-      font-size: 13px;
-      padding: 10px 20px;
+      font-size: 16px;
+      padding: 12px 20px;
       border-radius: 8px;
       transition: opacity 0.15s;
     }
@@ -78,9 +97,9 @@
       margin: 0 auto;
       padding: 80px 40px 60px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1.6fr;
       gap: 60px;
-      align-items: center;
+      align-items: start;
     }
 
     .hero-badge {
@@ -101,16 +120,14 @@
       height: 7px;
       border-radius: 50%;
       background: var(--green);
-      animation: pulse 2s infinite;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hero-badge .dot { animation: none; }
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-badge .dot { animation: pulse 2s infinite; }
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+      }
     }
 
     .hero h1 {
@@ -350,6 +367,7 @@
     /* RESPONSIVE */
     @media (max-width: 768px) {
       nav { padding: 16px 20px; }
+      .nav-links { display: none; }
 
       .hero {
         grid-template-columns: 1fr;
@@ -389,11 +407,11 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">Free <span>Radical</span></div>
-    <div style="display:flex;align-items:center;gap:16px;">
-      <a href="#features" style="font-size:13px;font-weight:500;color:var(--muted);">Features</a>
-      <a href="https://testflight.apple.com/join/aGN8KV9j" target="_blank" rel="noopener" class="nav-cta">Download</a>
+    <div class="nav-logo">Free <span class="radical-word">Radical</span></div>
+    <div class="nav-links">
+      <a href="#features" class="nav-link">Features</a>
     </div>
+    <a href="https://testflight.apple.com/join/aGN8KV9j" target="_blank" rel="noopener" class="nav-cta">Download</a>
   </nav>
 
   <!-- HERO -->
