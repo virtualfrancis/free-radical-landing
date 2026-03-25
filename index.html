@@ -48,7 +48,7 @@
     }
 
     .nav-logo {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
       color: var(--text);
       letter-spacing: -0.3px;
@@ -56,12 +56,16 @@
 
     .nav-logo span { color: var(--indigo); }
 
+    nav a {
+      padding: 10px 8px;
+    }
+
     .nav-cta {
       background: var(--indigo);
       color: #fff;
       font-weight: 600;
-      font-size: 14px;
-      padding: 8px 20px;
+      font-size: 13px;
+      padding: 10px 20px;
       border-radius: 8px;
       transition: opacity 0.15s;
     }
@@ -87,7 +91,7 @@
       border: 1px solid var(--bg3);
       border-radius: 100px;
       padding: 6px 14px;
-      font-size: 12px;
+      font-size: 13px;
       color: var(--muted);
       margin-bottom: 24px;
     }
@@ -105,6 +109,10 @@
       50% { opacity: 0.4; }
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      .hero-badge .dot { animation: none; }
+    }
+
     .hero h1 {
       font-size: 48px;
       font-weight: 800;
@@ -115,8 +123,8 @@
 
     .hero h1 span { color: var(--indigo); }
 
-    .hero p {
-      font-size: 18px;
+    .hero-sub {
+      font-size: 16px;
       color: var(--muted);
       margin-bottom: 36px;
       line-height: 1.7;
@@ -132,7 +140,7 @@
       background: var(--indigo);
       color: #fff;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 16px;
       padding: 12px 28px;
       border-radius: 10px;
       transition: opacity 0.15s;
@@ -144,7 +152,7 @@
       background: var(--bg2);
       color: var(--text);
       font-weight: 600;
-      font-size: 15px;
+      font-size: 16px;
       padding: 12px 28px;
       border-radius: 10px;
       border: 1px solid var(--bg3);
@@ -179,7 +187,7 @@
     }
 
     .section-label {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -188,14 +196,14 @@
     }
 
     .section-title {
-      font-size: 36px;
+      font-size: 28px;
       font-weight: 700;
       letter-spacing: -0.5px;
       margin-bottom: 16px;
     }
 
     .section-sub {
-      font-size: 17px;
+      font-size: 16px;
       color: var(--muted);
       max-width: 540px;
       line-height: 1.7;
@@ -228,7 +236,7 @@
     }
 
     .feature-desc {
-      font-size: 14px;
+      font-size: 16px;
       color: var(--muted);
       line-height: 1.6;
     }
@@ -260,44 +268,22 @@
       border: 1px solid var(--bg3);
       border-radius: 100px;
       padding: 8px 18px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
       color: var(--muted);
     }
 
     /* PRIVACY */
-    .privacy-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 48px;
+    .privacy-callout {
+      margin-top: 32px;
+      text-align: center;
     }
 
-    .privacy-card {
-      background: var(--bg2);
-      border: 1px solid var(--bg3);
-      border-radius: 14px;
-      padding: 28px;
-      display: flex;
-      gap: 16px;
-    }
-
-    .privacy-icon {
-      font-size: 22px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .privacy-title {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .privacy-desc {
-      font-size: 14px;
+    .privacy-callout p {
+      font-size: 13px;
       color: var(--muted);
-      line-height: 1.6;
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
+      letter-spacing: 0.02em;
     }
 
     /* WAITLIST */
@@ -350,7 +336,7 @@
       border: 1px solid var(--bg3);
       border-radius: 100px;
       padding: 5px 14px;
-      font-size: 12px;
+      font-size: 13px;
       color: var(--muted);
       font-weight: 500;
     }
@@ -366,7 +352,7 @@
         text-align: center;
       }
 
-      .hero h1 { font-size: 36px; }
+      .hero h1 { font-size: 28px; }
       .hero-actions { justify-content: center; }
       .hero-screenshots { justify-content: center; }
       .hero-screenshots img { width: 150px; }
@@ -374,7 +360,6 @@
       section { padding: 60px 20px; }
 
       .features-grid { grid-template-columns: 1fr; }
-      .privacy-grid { grid-template-columns: 1fr; }
 
       .sources-section section {
         flex-direction: column;
@@ -398,9 +383,9 @@
   <!-- NAV -->
   <nav>
     <div class="nav-logo">Free <span>Radical</span></div>
-    <div style="display:flex;align-items:center;gap:28px;">
-      <a href="#features" style="font-size:14px;font-weight:500;color:var(--muted);">Features</a>
-      <a href="#waitlist" style="font-size:14px;font-weight:500;color:var(--muted);">Waitlist</a>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <a href="#features" style="font-size:13px;font-weight:500;color:var(--muted);">Features</a>
+      <a href="#waitlist" style="font-size:13px;font-weight:500;color:var(--muted);">Early Access</a>
       <a href="#waitlist" class="nav-cta">Get Early Access</a>
     </div>
   </nav>
@@ -410,12 +395,12 @@
     <div>
       <div class="hero-badge">
         <span class="dot"></span>
-        iOS and Android, coming soon
+        iOS and Android &middot; Early Access
       </div>
       <h1>Know before<br /><span>you go.</span></h1>
-      <p>Free Radical gives you activity-specific outdoor conditions in one place. Switch between skiing, climbing, hiking, diving, and fishing to see only what matters for your objective.</p>
+      <p class="hero-sub">Activity-specific conditions for your next objective. Available now for Android, iOS coming soon.</p>
       <div class="hero-actions">
-        <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
+        <a href="#waitlist" class="btn-primary">Get Early Access &rarr;</a>
         <a href="#features" class="btn-secondary">See Features</a>
       </div>
     </div>
@@ -427,7 +412,6 @@
 
   <!-- FEATURES -->
   <section id="features">
-    <div class="section-label">Features</div>
     <h2 class="section-title">Conditions built for outdoor objectives</h2>
     <p class="section-sub">All the data sources you'd check anyway, pulled together by activity and shown in the order that actually matters.</p>
 
@@ -470,8 +454,8 @@
     <section>
       <div class="sources-left">
         <div class="section-label">Data Sources</div>
-        <h2 class="section-title" style="font-size: 28px;">Built on real data</h2>
-        <p class="section-sub" style="font-size: 15px;">Public agency sources, not third-party aggregators.</p>
+        <h2 class="section-title">Built on real data</h2>
+        <p class="section-sub">Public agency sources, not third-party aggregators.</p>
       </div>
       <div class="sources-list">
         <span class="source-pill">Open-Meteo</span>
@@ -490,28 +474,8 @@
     <h2 class="section-title">No account. No tracking.</h2>
     <p class="section-sub">The app is a direct window into public data. There is nothing else going on.</p>
 
-    <div class="privacy-grid">
-      <div class="privacy-card">
-        <div class="privacy-icon">🚫</div>
-        <div>
-          <div class="privacy-title">No account required</div>
-          <div class="privacy-desc">No login, no profile, no tracking. Open the app and get conditions.</div>
-        </div>
-      </div>
-      <div class="privacy-card">
-        <div class="privacy-icon">📡</div>
-        <div>
-          <div class="privacy-title">Direct data sources</div>
-          <div class="privacy-desc">The app connects directly to public data APIs. Nothing is routed through a developer server.</div>
-        </div>
-      </div>
-      <div class="privacy-card">
-        <div class="privacy-icon">🔇</div>
-        <div>
-          <div class="privacy-title">No telemetry</div>
-          <div class="privacy-desc">No analytics, no usage tracking, no ads. Your outdoor plans are your business.</div>
-        </div>
-      </div>
+    <div class="privacy-callout">
+      <p>No account &middot; No tracking &middot; All data from public sources</p>
     </div>
   </section>
 
@@ -520,11 +484,10 @@
     <div class="waitlist-inner">
       <div class="section-label" style="text-align:center;">Early Access</div>
       <h2 class="section-title">Get in early</h2>
-      <p class="section-sub">iOS and Android builds are in development. Join the waitlist and be first to know when it's ready.</p>
+      <p class="section-sub">Android is live now. iOS coming soon.</p>
 
-      <iframe data-tally-src="https://tally.so/embed/WO0O8k?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="152" frameborder="0" marginheight="0" marginwidth="0" title="Free Radical Early Access"></iframe>
-      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
-      <p class="waitlist-note">No spam. Just a heads up when it's ready.</p>
+      <a href="#" id="waitlist-cta" class="btn-primary">Get Early Access &rarr;</a>
+      <p class="waitlist-note">No account required. Free to download.</p>
     </div>
   </div>
 
@@ -534,7 +497,7 @@
     <div class="platform-badges">
       <span class="platform-badge">Android</span>
       <span class="platform-badge">iOS</span>
-      <span class="platform-badge">Coming Soon</span>
+      <span class="platform-badge">Early Access</span>
     </div>
   </footer>
 
